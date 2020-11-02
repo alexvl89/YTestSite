@@ -20,6 +20,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news/',include('news.urls')),
+    #при запросе http://127.0.0.1/news/ вызываются вложенные адреса include('news.urls')
+    path('',include('news.urls')),
+    #path('news/',include('news.urls')),
     #path('test/',test),
 ]
