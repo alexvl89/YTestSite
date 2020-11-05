@@ -7,6 +7,6 @@ from .views import *
 #указывает маршрут на функцию index, test
 urlpatterns=[
     path('',index),
-    path('test/',test),
+    #path('test/',test),
 
 ]
