@@ -43,6 +43,7 @@ class Category(models.Model):
     #атрибут db_index=True индексирует поле
     title = models.CharField(max_length=150, db_index=True, verbose_name='Наименование категории')
 
+    #стандарное представление чтобы показывало в значение
     def __str__(self):
         return self.title
 
