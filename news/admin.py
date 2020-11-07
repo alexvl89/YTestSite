@@ -4,6 +4,9 @@ from django.contrib import admin
 
 from .models import News, Category
 
+#редактируем название в админке
+admin.site.site_header = 'Администрирование сайта Django'
+
 #класс для добавления в админ панели столбцов таблицы.
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('id','title', 'category', 'created_at','update_at','is_published')

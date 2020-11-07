@@ -28,6 +28,11 @@ class News(models.Model):
     #поле первичного ключа для таблицу Category. on_delete=models.PROTECT - защита от удаляния
     category=models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
+
+    def my_fun(self):
+        return 'Hello from model'
+
+    
     def __str__(self):
         return self.title
 
