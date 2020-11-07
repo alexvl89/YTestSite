@@ -9,10 +9,14 @@ from .views import *
 
 
 #указывает маршрут на функцию index, test
+# первый аргумент в path - это путь приложения
+# name - имя маршрута, чтобы ссылаться с html страниц
+# второй аргумент index и get_category - функции в файле views.py
 urlpatterns=[
-    path('',index),
+    path('',index, name='home'),
+    # path('',index),
     # <int:category_id>/ - адрес категории при переходе открывается функция get_category
-    path('category/<int:category_id>/',get_category),
+    path('category/<int:category_id>/',get_category, name='category'),
     #path('test/',test),
 
 ]
