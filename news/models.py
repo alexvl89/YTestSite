@@ -1,5 +1,8 @@
 from django.db import models
 
+# подключение модуля для построение ссылок
+from django.urls import reverse
+
 # Create your models here.
 #Описание атрибутов - полей таблицы для новостей
 
@@ -36,6 +39,11 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+    # стандарное название метода для опеределения в python
+    def get_absolute_url(self):
+        return reverse('view_news', kwargs={"news_id": self.pk})
+    
+
     class Meta:
         #Наименование модели в единственном числе
         verbose_name='Новость'
@@ -51,6 +59,11 @@ class Category(models.Model):
     #стандарное представление чтобы показывало в значение
     def __str__(self):
         return self.title
+
+    # стандарное название метода для опеределения в python
+    def get_absolute_url(self):
+        return reverse('category', kwargs={"category_id": self.pk})
+    
 
 
     class Meta:

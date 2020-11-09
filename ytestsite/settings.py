@@ -121,8 +121,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+# размещение статических данных (css,js,img)
 STATIC_URL = '/static/'
+
+# пуль к папке где хранятся все статические файлы (корень приложения ytestsite)
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+
+# список путей на дополнительные папки со статикой
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'ytestsite/static'),
+]
 
 #переменная с указанием папки где будут загружаться файлы
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')

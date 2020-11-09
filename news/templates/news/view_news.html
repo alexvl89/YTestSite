@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+<!-- block.super - функция вывода стандарной надписи - вызов родительского метода-->
+{% block title %}
+  {{ news_item.title }} :: {{block.super}}
+{% endblock %}
+
+<!-- Блок sidebar -->
+{% block sidebar %}
+    {% include 'inc/_sidebar.html' %}   
+{% endblock %}   
+
+<!-- Блок контент -->
+{% block content %}
+    <div class="card mb-3">
+      <div class="card-header">
+        {% comment %}
+        <!-- {{ forloop.counter }} -->
+        <!-- Категория: <a href="{% url 'category' item.category.pk %}">{{ item.category }} </a> -->
+        {%endcomment%}
+        Категория: 
+        <a href="{{ news_item.category.get_absolute_url }}">
+            {{ news_item.category }} 
+        </a>
+      </div>
+      <div class="card-body">
+        <div class="media">
+          {% if item.photo %}
+          <img src="{{ news_item.photo.url }}" alt="" width="350" class="mr-3">
+          {% else %}
+          <img src="https://picsum.photos/id/1060/350/235/?blur=2" alt="" class="mr-3">
+          {% endif %}
+          <div class="media-body">
+
+            <!-- <h5 class="card-title">{{ item.title }}</h5> -->
+            <!-- <h5 class="card-title {% cycle 'text-danger' 'text-success' %}"> -->
+            <h5 class="card-title">
+              {{ news_item.title }}
+            </h5>
+            {%comment%}
+            <!-- linebreaks - для перевода строк -->
+            <!-- |safe - для отмены экранирования HTML строк -->
+            {%endcomment%}
+            <p class="card-text">{{ news_item.content|safe|linebreaks }}</p>
+            <p></p>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <!-- {{item.created_at|date:"Y-m-d H:i:s"}} -->
+          <!-- Для вывода времени - как давно создалась запись -->
+          {{ news_item.created_at|timesince }}
+
+        </div>
+      </div>
+    </div>
+{% endblock %}

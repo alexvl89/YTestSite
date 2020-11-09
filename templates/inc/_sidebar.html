@@ -1,0 +1,24 @@
+<!-- импортирование файла news_tags c приложения news -->
+{% load news_tags %}
+
+<!-- закоментированная часть -->
+{% comment %} 
+<div class="list-group">
+    <!-- вызов функции с выше подгруженного файла и передача параметров тегу categories -->
+    {% get_list_categories as categories %}
+    <!-- использование полученного тега categories -->
+    {% for item in categories %}
+    <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action">
+      {{ item.title }}
+    </a>
+    {%endfor%}
+  </div>
+
+  <br>
+  {% endcomment %}
+
+  <!-- подключение функции show_categories с файла news_tags  с передачей агрументов-->
+  {% show_categories %}
+  {% comment %} 
+  <!-- {% show_categories arg2='User' arg1='Hi' %} -->
+  {% endcomment %}
